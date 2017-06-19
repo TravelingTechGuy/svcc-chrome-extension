@@ -1,0 +1,48 @@
+body {
+  font-family: Roboto, Helvetica, Arial;
+  background:#FFF;
+}
+
+.container {
+  margin:30px auto 0;
+  text-align: center;
+  width: 600px;
+  height: 400px;
+  padding-left: 70px;
+  padding-top: 20px;
+  font-size: 16px;
+}
+
+.header {
+  text-align: center;
+}
+
+.header > span {
+  color: #FFAD61;
+  font-weight: 400;
+  font-size: 32px;
+}
+
+.header > img {
+  vertical-align: bottom;
+}
+
+form {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+td {
+  text-align: left;
+  vertical-align: text-top;
+}
+
+.icon {
+  vertical-align: text-bottom;
+  width: 20px;
+}
+
+td.bottom {
+  text-align: right;
+  padding-top: 10px;
+}

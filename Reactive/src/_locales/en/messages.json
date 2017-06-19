@@ -1,0 +1,10 @@
+{
+	"appName": {
+		"message": "SpotChecker extension",
+		"description": "The name of the application"
+	},
+	"appDescription": {
+		"message": "Check Precious Metals spot prices and major indexes",
+		"description": "The description of the application"
+	}
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Reactive",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "Reactive extension",
+  "homepage_url": "http://www.TravelingTechGuy.com",
+  "icons": {
+    "16": "icons/icon16.png",
+    "19": "icons/icon19.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "page": "background.html",
+    "persistent": true
+  },
+  "options_page": "options.html",
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "Reactive Extension",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
