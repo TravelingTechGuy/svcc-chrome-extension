@@ -3,6 +3,14 @@ import Footer from './footer';
 import './options.css';
 
 export default class Options extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  sendMessage() {
+    chrome.runtime.sendMessage({action: 'optionsChanged'}, () => window.close());
+  }
+
   render() {
     return (
       <div className="container">
@@ -11,6 +19,7 @@ export default class Options extends React.Component {
           <span>&nbsp;Reactive Extension Options Page</span>
         </div>
         <div>Here be options</div>
+        <button onClick={this.sendMessage}>Send message to background</button>
         <Footer size="large" />
       </div>
     );
