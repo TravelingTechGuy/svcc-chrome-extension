@@ -27,22 +27,29 @@ body {
   vertical-align: bottom;
 }
 
-form {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-td {
-  text-align: left;
-  vertical-align: text-top;
-}
-
 .icon {
   vertical-align: text-bottom;
   width: 20px;
 }
 
-td.bottom {
-  text-align: right;
+.item {
+  text-align: left;
   padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: blue;
+  color: white;
+  border: 1px solid white;
 }
+
+.btnDelete {
+  background-color: red;
+  color: white;
+  margin-left: 2px;
+  margin-right: 3px;
+  border: 1px solid white;
+}
+
+.btnDelete::before {
+  content: "\2716";
+}
+

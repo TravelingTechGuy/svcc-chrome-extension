@@ -3,7 +3,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     switch(request.action) {
       case 'optionsChanged':
         console.log('options changed!');
-        sendResponse();
+        sendResponse({message: 'received!'});
         break;
       default:  //unrecognized action - do nothing
         break;
