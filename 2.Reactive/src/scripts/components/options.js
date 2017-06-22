@@ -70,7 +70,8 @@ export default class Options extends React.Component {
                 {index + 1}. {item}
               </div>
             )
-          }</div>
+          }
+        </div>
         <p/>
         <button onClick={this.sendMessage}>Send message to background</button>
         <button onClick={this._saveItems}>Save options and close window</button>
