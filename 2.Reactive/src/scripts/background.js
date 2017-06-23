@@ -1,3 +1,25 @@
+const itemsKey = 'options';
+
+//read items from local storage
+const loadItems = () => {
+  let result = [];
+  let items = localStorage.getItem(itemsKey);
+  if(items) {
+    try {
+      result = JSON.parse(items);
+    }
+    catch(ex) {
+      console.error('cannot parse items');
+    }
+  }
+  return result;
+};
+
+//save items to local storage
+const saveItems = value => {
+  localStorage.setItem(itemsKey, JSON.stringify(value));
+};
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if(request.action) {
     switch(request.action) {
@@ -5,9 +27,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         console.log('just recived the message: %s', request.message);
         sendResponse({message: 'message recieved!'});
         break;
-      case 'optionsChanged':
+      case 'loadItems':
+        console.log('loading items from storage');
+        sendResponse({items: loadItems()});
+        break;
+      case 'saveOptions':
         console.log('options changed! Number of items: %s', request.items.length);
-        localStorage.setItem(request.itemsKey, JSON.stringify(request.items));
+        saveItems(request.items);
         sendResponse({message: 'options saved!'});
         break;
       default:  //unrecognized action - do nothing
