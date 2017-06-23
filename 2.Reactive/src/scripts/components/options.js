@@ -1,31 +1,16 @@
 import React from 'react';
 import Footer from './footer';
 import './options.css';
-const itemsKey = 'options';
 
 export default class Options extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {items: this.loadItems()};
+    this.state = {items: []};
     this._addItem = this.addItem.bind(this);
     this._removeItem = this.removeItem.bind(this);
     this._saveItems = this.saveItems.bind(this);
     this._sendAMessage = this.sendAMessage.bind(this);
-  }
-
-  //read items from local storage
-  loadItems() {
-    let result = [];
-    let items = localStorage.getItem(itemsKey);
-    if(items) {
-      try {
-        result = JSON.parse(items);
-      }
-      catch(ex) {
-        console.error('cannot parse items');
-      }
-    }
-    return result;
+    this.loadItems();
   }
 
   //add item to list
@@ -48,16 +33,23 @@ export default class Options extends React.Component {
   sendAMessage() {
     let message = {
       action: 'message',
-      message: `there are ${this.state.items.length} in the list`
+      message: `there are ${this.state.items.length} items in the list`
     };
     chrome.runtime.sendMessage(message, response => console.log('message: %s', response.message));
+  }
+
+  //have background page load items for us
+  loadItems() {
+    let message = {action: 'loadItems'};
+    chrome.runtime.sendMessage(message, response => {
+      this.setState({items: response.items});
+    });
   }
 
   //pass items to background page for local storage persistence
   saveItems() {
     let message = {
-      action: 'optionsChanged',
-      itemsKey: itemsKey,
+      action: 'saveOptions',
       items: this.state.items
     };
     chrome.runtime.sendMessage(message, response => {
