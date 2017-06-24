@@ -22,10 +22,7 @@ export default class Popup extends React.Component {
 
   //have background page load items for us
   loadItems() {
-    let message = {action: 'loadItems'};
-    chrome.runtime.sendMessage(message, response => {
-      this.setState({items: response.items});
-    });
+    chrome.runtime.sendMessage({action: 'loadItems'}, response => this.setState({items: response.items}));
   }
 
   render() {
