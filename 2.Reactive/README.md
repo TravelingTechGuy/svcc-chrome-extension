@@ -42,7 +42,7 @@
     cd /svcc-chrome-extension/2.Reactive
     npm i
     ```
-1. Build the extension: `npm run build`. You should get a webpack result that looks something like this:
+1. Build the extension:
     ```bash
     $ npm run build
 
@@ -78,3 +78,18 @@
     ```
 1. Load the built extension from the folder svcc-chrome-extension/2.Reactive/build in the Chrome extensions page.
 1. Profit.
+
+## Logic
+
+The extension has 3 parts:
+
+1. The **Popup** view shows items (strings) in a simple list.
+    1. It communicates with the background page to get the list of items from persisted local storage.
+    1. It demonstrates how to manipulate the extension's badge.
+1. The **Options** view allows adding/removing items to/from the list.
+    1. It demonstartes sending messages to the background page, and receiving a response.
+    1. It gets the list from local storage, through the bacground page.
+    1. The new list is saved to local storage upon request, through the bacground page.
+1. The **Backround** page handles all the local storage logic.
+    1. It has a message loop to listen to and handle incoming message.
+    1. It has a loop that executes an operation every *n* minutes - for now, it does nothing. We'll use it in the next sample.
