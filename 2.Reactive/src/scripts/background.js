@@ -1,4 +1,5 @@
 const itemsKey = 'options';
+const updateInterval = 1;
 
 //read items from local storage
 const loadItems = () => {
@@ -42,9 +43,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
-const minutes = 1;
 let loop = () => {
   console.log(Date.now());
-  setTimeout(loop, 1000 * 60 * minutes);
+  setTimeout(loop, 1000 * 60 * updateInterval);
 };
 loop();
