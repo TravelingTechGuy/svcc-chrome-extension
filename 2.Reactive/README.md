@@ -30,11 +30,11 @@
 1. Install NodeJS and NPM (see [NodeJS site](https://nodejs.org/)).
 1. Open a console/command window.
 1. Clone this repo:
-    ```
+    ```bash
     git clone https://github.com/TravelingTechGuy/svcc-chrome-extension.git
     ```
 1. Install webpack globally:
-    ```
+    ```bash
     npm install -g webpack
     ```
 1. Go to this sample's folder, and install all the dependencies:
