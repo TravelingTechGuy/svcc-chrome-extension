@@ -1,0 +1,38 @@
+{
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "quotes": [2, "single", "avoid-escape"],
+    "semi": [2, "always"],
+    "camelcase": [2, {"properties": "never"}],
+    "strict": [2, "global"],
+    "eqeqeq": [2, "smart"],
+    "curly": [2, "all"],
+    "no-spaced-func": 2,
+    "no-unused-vars": 2,
+    "no-underscore-dangle": 0,
+    "no-unused-expressions": 2,
+    "react/jsx-no-bind": [2, {
+      "allowArrowFunctions": true,
+      "allowBind": false,
+      "ignoreRefs": true
+    }],
+    "react/jsx-uses-react": [1],
+    "react/jsx-uses-vars": 2,
+    "react/no-did-update-set-state": 2,
+    "react/no-unknown-property": 2,
+    "react/prop-types": 2,
+    "react/react-in-jsx-scope": 2
+  }
+}

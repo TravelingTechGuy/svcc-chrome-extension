@@ -1,0 +1,17 @@
+.footer {
+  font-family: Roboto, Helvetica, Arial;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.small {
+  font-size: 10px;
+}
+
+.large {
+  font-size: 16px;
+}
+
+a:link, a:visited {
+  color: #1a0dab;
+}

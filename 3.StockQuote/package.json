@@ -1,0 +1,37 @@
+{
+  "name": "stockquote-extension",
+  "version": "1.0.0",
+  "description": "Chrome Extension that checks stocks price",
+  "scripts": {
+    "build": "webpack",
+    "dist": "cross-env NODE_ENV=production webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:TravelingTechGuy/svcc-chrome-extension.git"
+  },
+  "author": "Guy Vider",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.5.2",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.0.1",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.1.1",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-react": "^7.0.1",
+    "json-loader": "^0.5.4",
+    "moment-timezone": "^0.5.13",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-sortable-hoc": "^0.6.3",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.0.0",
+    "webpack-cleanup-plugin": "^0.5.1",
+    "zip-webpack-plugin": "^1.1.0"
+  }
+}

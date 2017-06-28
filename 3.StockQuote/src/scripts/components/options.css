@@ -1,0 +1,74 @@
+body {
+  font-family: Roboto, Helvetica, Arial;
+  background:#FFF;
+}
+
+.container {
+  margin:30px auto 0;
+  text-align: center;
+  width: 600px;
+  height: 400px;
+  padding-left: 70px;
+  padding-top: 20px;
+  font-size: 16px;
+}
+
+.header {
+  text-align: center;
+}
+
+.header > span {
+  color: #FFAD61;
+  font-weight: 400;
+  font-size: 32px;
+}
+
+.header > img {
+  vertical-align: bottom;
+}
+
+form {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border: 0;
+}
+
+td {
+  text-align: left;
+  vertical-align: text-top;
+  padding: 15px
+}
+
+td.bottom {
+  text-align: right;
+  padding-top: 10px;
+}
+
+.item {
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: blue;
+  color: white;
+  border: 1px solid white;
+}
+
+.btnDelete {
+  background-color: red;
+  color: white;
+  margin-left: 2px;
+  margin-right: 3px;
+  border: 1px solid white;
+}
+
+.btnDelete::before {
+  content: "\2716";
+}
+
+legend {
+  font-weight: 600;
+}
