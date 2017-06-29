@@ -13,15 +13,18 @@ const timezones = {
 export default class Options extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {symbols: ['a','b']};
+    this.state = {symbols: []};
     this._saveOptions = this.saveOptions.bind(this);
     this._addItem = this.addItem.bind(this);
     this._removeItem = this.removeItem.bind(this);
-    chrome.runtime.sendMessage({action: 'getOptions'}, response => this.state = response);
+    chrome.runtime.sendMessage({action: 'getOptions'}, function(response) {
+      this.setState(response);
+    }.bind(this));
   }
 
   //add item to list
-  addItem() {
+  addItem(e) {
+    e.preventDefault();
     let newValue = document.getElementById('symbol').value.toString().trim();
     if(newValue) {
       this.setState({symbols: this.state.symbols.concat(newValue)});
@@ -30,6 +33,7 @@ export default class Options extends React.Component {
 
   //remove item from list
   removeItem(e) {
+    e.preventDefault();
     let index = e.target.dataset.index;
     let temp = this.state.symbols;
     temp.splice(index, 1);
@@ -46,12 +50,14 @@ export default class Options extends React.Component {
     }
   }
 
-  saveOptions() {
+  saveOptions(e) {
+    e.preventDefault();
     let options = {
       symbols: this.state.symbols,
       timezone: this.getFieldValue('timezone'),
       interval: this.getFieldValue('interval')
     };
+    console.log(options);
     chrome.runtime.sendMessage({action: 'optionsChanged', options: options}, () => window.close());
   }
 
