@@ -28,7 +28,6 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-sortable-hoc": "^0.6.3",
     "style-loader": "^0.18.2",
     "webpack": "^3.0.0",
     "webpack-cleanup-plugin": "^0.5.1",
