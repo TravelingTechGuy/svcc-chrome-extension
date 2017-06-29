@@ -6,14 +6,14 @@ export default class Popup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {items: []};
-    this._showSuccessBadge = this.showBadge.bind(this, 'Yay!', [0, 149, 72, 230]);
-    this._showFailureBadge = this.showBadge.bind(this, 'No!!!', [214, 39, 40, 230]);
-    this._hideBadge = this.showBadge.bind(this, '');
+    this._showSuccessBadge = this.showBadge.bind(this, 'Yay!', 'Yay, it works!', [0, 149, 72, 230]);
+    this._showFailureBadge = this.showBadge.bind(this, 'No!!!', 'No!!!!!!!!!!!!!!!!', [214, 39, 40, 230]);
+    this._hideBadge = this.showBadge.bind(this, '', '');
     this.loadItems();
   }
 
-  showBadge(badgeText = '', badgeColor = []) {
-    chrome.browserAction.setTitle({title: badgeText});
+  showBadge(badgeText = '', badgeTitle = '', badgeColor = []) {
+    chrome.browserAction.setTitle({title: badgeTitle});
     chrome.browserAction.setBadgeText({text: badgeText});
     if(badgeColor.length) {
       chrome.browserAction.setBadgeBackgroundColor({color: badgeColor});
