@@ -38,10 +38,13 @@ body {
   font-size: 18px;
 }
 
+table {
+  width: 260px;
+  margin-left: 20px;
+}
+
 td, th {
   padding-right: 15px;
-  width: 50px;
-  text-align: left;
 }
 
 td.price {
@@ -56,7 +59,10 @@ td.price::before {
 td.change {
   text-align: left;
   font-weight: 700;
-  padding-left: 20px;
+}
+
+td.pct {
+  text-align: right;
 }
 
 td.pct::after {
