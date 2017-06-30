@@ -1,4 +1,4 @@
-const nickname = ['Agent Orange', 'Pumpkin', 'P*ssy Grabber', 'Tiny Fingers'];
+const nickname = ['Agent Orange', 'Pumpkin', 'Putin Lackey', 'Tiny Fingers'];
 const adverbs = ['yugely', 'bigly', 'tremendously'];
 
 const main = () => {
