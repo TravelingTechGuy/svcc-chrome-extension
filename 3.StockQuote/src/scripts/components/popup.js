@@ -39,10 +39,10 @@ export default class Popup extends React.Component {
             this.state.quotes.map(quote => {
               return (
                 <tr key={quote.symbol}>
-                  <td>{quote.symbol}</td>
+                  <td><a href={`https://www.google.com/finance?q=${quote.symbol}`} target="_blank">{quote.symbol}</a></td>
                   <td className="price">{quote.current}</td>
-                  <td className={'change ' + quote.change.startsWith('-') ? 'minus': 'plus'}>{quote.change}</td>
-                  <td className={'change pct ' + quote.changePct.startsWith('-') ? 'minus': 'plus'}>{quote.changePct}</td>
+                  <td className={'change ' + (quote.change.startsWith('-') ? 'minus': 'plus')}>{quote.change}</td>
+                  <td className={'change pct ' + (quote.changePct.startsWith('-') ? 'minus': 'plus')}>{quote.changePct}</td>
                 </tr>
               );
             })
