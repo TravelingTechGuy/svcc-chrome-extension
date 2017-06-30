@@ -4,24 +4,19 @@
 const url = 'https://www.google.com/finance/info?q=NSE:';
 
 export async function getLatestQuotes(symbols = []) {
-  let result = {};
+  let result = {quotes: []};
   try {
     if(symbols.length) {
       let response = await fetch(url + symbols.join(','));
       let text = await response.text();
       let quotes = JSON.parse(text.replace('//',''));
-      quotes.forEach(q => {
-        result.quotes[q.t] = {current: q.l_cur, change: q.c, changePct: q.cp};
-      });
+      quotes.forEach(q => result.quotes.push({symbol: q.t, current: q.l_cur, change: q.c, changePct: q.cp}));
     }
   }
   catch(ex) {
     result.error = ex.message;
   }
   finally {
-    if(!result.quotes) {
-      result.quotes = [];
-    }
     return result;
   }
 };
