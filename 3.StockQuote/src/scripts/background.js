@@ -46,12 +46,11 @@ let main = () => {
   loop();
 
   //handle view actions
-  chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
+  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if(request.action) {
       switch(request.action) {
         case 'getQuotes':
-          await bg.updateQuotes();
-          sendResponse(bg.latest.quotes);
+          sendResponse(bg.latest);
           break;
         case 'getOptions':
           sendResponse(options);
@@ -60,12 +59,14 @@ let main = () => {
           options = request.options;
           bg.updateOptions(options);
           logic.saveToDB('options', options);
+          bg.updateQuotes();
           sendResponse({message: 'options saved'});
           break;
         default:  //unrecognized action - do nothing
           break;
       }
     }
+    return true;
   });
 };
 
