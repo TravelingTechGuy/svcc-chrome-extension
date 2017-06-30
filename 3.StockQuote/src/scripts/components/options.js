@@ -13,7 +13,7 @@ const timezones = {
 export default class Options extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {symbols: []};
+    this.state = {symbols: [], timezone: '', interval: ''};
     this._saveOptions = this.saveOptions.bind(this);
     this._addItem = this.addItem.bind(this);
     this._removeItem = this.removeItem.bind(this);
@@ -22,10 +22,14 @@ export default class Options extends React.Component {
     }.bind(this));
   }
 
+  handleChange(e) {
+    this.setState({[e.target.name]: e.target.value});
+  }
+
   //add item to list
   addItem(e) {
     e.preventDefault();
-    let newValue = document.getElementById('symbol').value.toString().trim();
+    let newValue = document.getElementById('symbol').value.toString().toUpperCase().trim();
     if(newValue) {
       this.setState({symbols: this.state.symbols.concat(newValue)});
     }
@@ -88,14 +92,14 @@ export default class Options extends React.Component {
                 <legend>Choose update times</legend>
                 <p/>
                 <label htmlFor="timezone">Results time zone:</label>&nbsp;
-                <select name="timezone" value={this.state.timezone}>
+                <select name="timezone" value={this.state.timezone} onChange={this.handleChange}>
                 {
-                  Object.keys(timezones).map(tz => <option value={timezones[tz]}>{tz}</option>)
+                  Object.keys(timezones).map((tz, i) => <option key={i} value={timezones[tz]}>{tz}</option>)
                 }
                 </select>
                 <p/>
                 <label htmlFor="interval">Update interval:</label>&nbsp;
-                <select name="interval" value={this.state.interval}>
+                <select name="interval" value={this.state.interval} onChange={this.handleChange}>
                   <option value="5">5 Minutes</option>
                   <option value="10">10 Minutes</option>
                   <option value="15">15 Minutes</option>
@@ -119,7 +123,7 @@ export default class Options extends React.Component {
     return (
       <div className="container">
         <div className="header">
-          <img src="../icons/icon48.png" />
+          <img src="../icons/svcc.png" width="48" height="48" />
           <span>&nbsp;SpotChecker Options Page</span>
         </div>
         <div>{this.showForm()}</div>
