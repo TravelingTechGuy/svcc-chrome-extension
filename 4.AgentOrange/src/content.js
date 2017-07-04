@@ -1,14 +1,12 @@
-const nickname = ['Agent Orange', 'Pumpkin', 'Putin Lackey', 'Tiny Fingers'];
-const adverbs = ['yugely', 'bigly', 'tremendously'];
-
-const main = () => {
+(function() {
+  const nickname = ['Agent Orange', 'Pumpkin', 'Putin Lackey', 'Tiny Fingers'];
+  const adverbs = ['yugely', 'bigly', 'tremendously'];
+  let length1 = nickname.length, length2 = adverbs.length;
   let elements = document.getElementsByTagName('*');
   let replacements = 0;
   
-  
   for(let i = 0; i < elements.length; i++) {
     let element = elements[i];
-    let length1 = nickname.length, length2 = adverbs.length;
     for(let j = 0; j < element.childNodes.length; j++) {
       let node = element.childNodes[j];
       if (node.nodeType === 3) {
@@ -22,8 +20,5 @@ const main = () => {
       }
     }
   }
-  //
   chrome.runtime.sendMessage({replacements: replacements}, () => {});
-};
-
-main();
+}());

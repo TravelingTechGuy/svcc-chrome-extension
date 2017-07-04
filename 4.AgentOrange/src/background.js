@@ -14,7 +14,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     color = [0, 149, 72, 230];
   
   }
-  chrome.browserAction.setBadgeText({text:  badge});
+  chrome.browserAction.setBadgeText({text: badge});
   chrome.browserAction.setBadgeBackgroundColor({color: color});
   chrome.browserAction.setTitle({title: title});
   let style = 'background-color: blue; color: white; font-size:15px;';
