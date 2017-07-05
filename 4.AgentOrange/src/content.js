@@ -1,6 +1,6 @@
 (function() {
   const nickname = ['Drumpf', 'Agent Orange', 'Pumpkin', 'Putin Lackey', 'Tiny Fingers'];
-  const adverbs = ['yugely', 'bigly', 'tremendously'];
+  const adverbs = ['yugely', 'bigly', 'tremendously', 'covfefe'];
   let drumpf = /Trump/g, adverb = /\b[A-Za-z]*ly\b/g;
   let length1 = nickname.length, length2 = adverbs.length;
   let isDrumpfed = false;
