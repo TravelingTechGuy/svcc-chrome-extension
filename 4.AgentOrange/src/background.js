@@ -3,8 +3,8 @@
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   let title, badge, color;
-  if(request.replacements) {
-    title = `Corrections made: ${request.replacements}`;
+  if(request.corrections) {
+    title = `Corrections made: ${request.corrections}`;
     badge = 'Booo!';
     color = [214, 39, 40, 230];
   }
