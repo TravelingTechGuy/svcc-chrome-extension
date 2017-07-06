@@ -8,7 +8,7 @@
 1. [Webpack](https://webpack.github.io/) packs our code into 3 scripts and creates the final distributed version.
 1. We make use of [babel](https://babeljs.io/) to transpile the JSX/ES6 code, and [ESLint](eslint.org/) to lint it for syntactical/style errors.
 
-### 2. Intera-extension communication
+### 2. Intra-extension communication
 
 1. Using `chrome.runtime.sendMessage` to send a message from views.
 1. Using `chrome.runtime.onMessage.addListener` in the background, to listen to incoming messages, and handle requests.
