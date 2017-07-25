@@ -79,6 +79,62 @@
 1. Load the built extension from the folder svcc-chrome-extension/2.Reactive/build in the Chrome extensions page.
 1. Profit.
 
+## Building for production
+
+To pack the extension for production - distribution through the Chrome web store, we need to add 2 more steps to the Webpack pipeline - minification and zipping.
+
+### Minification
+
+We'd like our code to be minified for 2 reasons:
+
+1. Make it smaller
+1. Make it harder to reverse-engineer
+
+Webpack comes pre-installed with an UglifyJS plugin, accssible through the `webpack.optimize.UglifyJsPlugin` object. Sadly, as of this time (7/2017) the built-in plugin does not support ES6. To get around this, we'll use a beta version of the `uglifyjs-webpack-plugin`, which usues `uglify-es` in place of `uglify-js`. Install it using:
+
+```bash
+$ npm install uglifyjs-webpack-plugin@1.0.0-beta.1
+```
+
+You can then use it in code to minify/uglify your code:
+
+```javascript
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+...
+  new UglifyJSPlugin({
+      compress: {
+        warnings: false,
+        drop_console: true,
+        screw_ie8: true,
+        conditionals: true,
+        unused: true,
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        if_return: true,
+        join_vars: true,
+      },
+      output: {
+        comments: false,
+      },
+    })
+```
+
+*I hope to revisit this section in the future, and report that Webpack caugt up to ES6.*
+
+### Zipping
+
+The web store expects you to upload a zip file. Using the `zip-webpack-plugin` allows us to easily zip the necessary files and folders, while maintaining the directory structure necessary.
+
+Once you are ready to distribute your extewnsion, simply run:
+
+```bash
+$ npm run dist
+```
+
+You'll find the zip file, with the current version of the extension in its name, in the `dist` folder.
+
 ## Logic
 
 The extension has 3 parts:

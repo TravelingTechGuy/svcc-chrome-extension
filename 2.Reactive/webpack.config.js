@@ -1,8 +1,8 @@
-const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const ZipPlugin = require('zip-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const manifest = require('./src/manifest');
 
 let options = {
@@ -68,24 +68,24 @@ let options = {
 
 if(process.env.NODE_ENV === 'production') {
   options.plugins.push(
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: {
-    //     warnings: false,
-    //     drop_console: false,
-    //     screw_ie8: true,
-    //     conditionals: true,
-    //     unused: true,
-    //     comparisons: true,
-    //     sequences: true,
-    //     dead_code: true,
-    //     evaluate: true,
-    //     if_return: true,
-    //     join_vars: true,
-    //   },
-    //   output: {
-    //     comments: false,
-    //   },
-    // }),
+    new UglifyJSPlugin({
+      compress: {
+        warnings: false,
+        drop_console: true,
+        screw_ie8: true,
+        conditionals: true,
+        unused: true,
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        if_return: true,
+        join_vars: true,
+      },
+      output: {
+        comments: false,
+      },
+    }),
     new ZipPlugin({
       path: '../dist',
       filename: `${manifest.name} ${manifest.version}.zip`,
