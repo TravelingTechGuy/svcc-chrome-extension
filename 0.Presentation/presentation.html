@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>Chrome Extension SVCC Presentation</title>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="deck/core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="deck/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="deck/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="deck/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="deck/extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="deck/extensions/scale/deck.scale.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="deck/themes/style/neon.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="deck/themes/transition/horizontal-slide.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="deck/core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="deck/modernizr.custom.js"></script>
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Begin slides. Just make elements with a class of slide. -->
+
+    <section class="slide" id="cover">
+      <h1>Building Chrome Extensions with React and Webpack</h1>
+      <h3>Silicon Valley Code Camp 2017</h3>
+    </section>
+
+    <section class="slide" id="about-me">
+      <h2>Guy Vider</h2>
+      <h3>Site: <a href="https://www.TravelingTechGuy.com">TravelingTechGuy.com</a></h3>
+      <h3>Github: <a href="https://github.com/TravelingTechGuy">github.com/TravelingTechGuy</a></h3>
+      <h3>LinkedIn: <a href="https://www.linkedin.com/in/gvider">linkedin.com/in/gvider</a></h3>
+      <h3>Twitter: <a href="https://twitter.com/@TravelTechGuy">@TravelTechGuy</a></h3>
+      <br>
+      <p>clone this repo: <code>git clone https://github.com/TravelingTechGuy/svcc-chrome-extension</code></p>
+    </section>
+
+    <section class="slide" id="contents">
+      <h3>In this session we'll cover:</h3>
+      <ol>
+        <li class="slide">What are Chrome extensions and why should you care? (3 minutes)</li>
+        <li class="slide">How to create a basic Chrome extension (10 minutes)</li>
+        <li class="slide">How to add React to the view parts, and how to use Webpack to package the extension (20 minutes)</li>
+        <li class="slide">Tie it all togather into a functional extension (10 minutes)</li>
+        <li class="slide">Q&A (time permitting)</li>
+      </ol>
+    </section>
+
+    <!-- End slides. -->
+
+    <!-- Begin extension snippets. Add or remove as needed. -->
+
+    <!-- deck.navigation snippet -->
+    <div aria-role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div>
+
+    <!-- deck.status snippet -->
+    <p class="deck-status" aria-role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="deck/jquery.min.js"></script>
+<script src="deck/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck/extensions/menu/deck.menu.js"></script>
+<script src="deck/extensions/goto/deck.goto.js"></script>
+<script src="deck/extensions/status/deck.status.js"></script>
+<script src="deck/extensions/navigation/deck.navigation.js"></script>
+<script src="deck/extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
