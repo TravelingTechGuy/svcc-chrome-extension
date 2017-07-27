@@ -5,20 +5,21 @@
 ### 1. Folder structure
 
 ```
-|
---|manifest.json
---|_locales
-  --|messages.json
---|icons
-  --|icon16.png
-  --|icon19.png
-  --|icon48.png
-  --|icon128.png
+manifest.json*
 background.html
 background.js
 options.html
 popup.html
+--|_locales*
+   --|messages.json
+--|icons*
+   --|icon16.png
+   --|icon19.png
+   --|icon48.png
+   --|icon128.png
 ```
+
+Files/folders with a * are mandatory (although you can get by without icons - Google will just use a generic square with the first letter of the extension).
 
 ### 2. Extension parts
 
