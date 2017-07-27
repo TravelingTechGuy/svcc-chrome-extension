@@ -46,7 +46,7 @@
       <h3>LinkedIn: <a href="https://www.linkedin.com/in/gvider">linkedin.com/in/gvider</a></h3>
       <h3>Twitter: <a href="https://twitter.com/@TravelTechGuy">@TravelTechGuy</a></h3>
       <br>
-      <p>clone this repo: <code>git clone https://github.com/TravelingTechGuy/svcc-chrome-extension</code></p>
+      <p>clone this repo: <pre><code>git clone https://github.com/TravelingTechGuy/svcc-chrome-extension</code></pre></p>
     </section>
 
     <section class="slide" id="contents">
@@ -60,6 +60,150 @@
       </ol>
     </section>
 
+    <section class="slide" id="extension">
+      <h3>What are extensions?</h3>
+      <blockquote cite="https://developer.chrome.com/extensions">
+        <p>
+          Extensions are small software programs that can modify and enhance the functionality of the Chrome browser. You write them using web technologies such as HTML, JavaScript, and CSS.
+          ... You can distribute your extension through the Chrome Web Store.
+        </p>
+        <cite><p>Google</p></cite>
+      </blockquote>
+      <h4>Simply put, extesnions are apps for your browser</h4>
+    </section>
+
+    <section class="slide" id="examples">
+      <h3>Some examples:</h3>
+      <ul>
+        <li>
+          <h4>uBlock Origin</h4>
+          <p>
+            Blocks ads and unwanted trackers<br>
+            Alters page content and DOM
+          </p>
+        </li>
+        <li>
+          <h4>HTTPS Everywhere</h4>
+          <p>
+            Attempts to switch to an HTTPS version of every site<br>
+            Alters page url
+          </p>
+        </li>
+        <li>
+          <h4>User Agent Switcher</h4>
+          <p>
+            Allows your Chrome to pass for other browsers/crawlers<br>
+            Alters HTTP request header
+          </p>
+        </li>
+        <li>
+          <h4>Shrtr</h4>
+          <p>
+            Shortens urls, using several shortening services<br>
+            Copies url, changes nothing
+          </p>
+        </li>
+      </ul>
+      <p>And many more at the Chrome web store... all free!</p>
+    </section>
+
+    <section class="slide" id="setup">
+      <h3>Setup</h3>
+      <ol>
+        <li>
+          In Chrome, go to Menu > More Tools > Extensions<br>
+          Alternatively, type <code>chrome://extensions</code> in the address bar
+        </li>
+        <li>Check the Developer mode box</li>
+        <li>You can now load unpacked extensions</li>
+      </ol>
+      <img src="images/extensions.png" alt="Chrome browser extensions settings page" />
+    </section>
+
+    <section class="slide" id="basic-extension">
+      <h3>Basic extension structure</h3>
+      <pre>
+        <code>
+          manifest.json*
+          background.html
+          background.js
+          options.html
+          popup.html
+          --|_locales*
+            --|messages.json
+          --|icons*
+            --|icon16.png
+            --|icon19.png
+            --|icon48.png
+            --|icon128.png
+        </code>
+      </pre>
+      <p>Files marked with * are mandatory.</p>
+      <ul>
+        <li>A basic extension is a folder containing a manifest file, some messages and some icons.</li>
+        <li>The extension can accsess only the files in its folder.</li>
+        <li>Icons are not strictly mandatory, Chrome will just provide a generic icon</li>
+        <li>To load your extension into Chrome, click the Load unpacked extension button, and point it to the folder containing the manifest file</li>
+      </ul>
+    </section>
+
+    <section class="slide" id="basic-extension-manifest">
+      <h3>Manifest file:</h3>
+      <pre>
+        <code>
+          {
+            "name": "Basic",
+            "version": "1.0.0",
+            "manifest_version": 2,
+            "description": "Basic extension",
+            "homepage_url": "http://www.TravelingTechGuy.com",
+            "icons": {
+              "16": "icons/icon16.png",
+              "19": "icons/icon19.png",
+              "48": "icons/icon48.png",
+              "128": "icons/icon128.png"
+            },
+            "default_locale": "en",
+            "background": {
+              "page": "background.html",
+              "persistent": true
+            },
+            "options_page": "options.html",
+            "browser_action": {
+              "default_icon": "icons/icon19.png",
+              "default_title": "Basic Extension",
+              "default_popup": "popup.html"
+            },
+            "permissions": [
+            ],
+            "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide" id="basic-extension-parts">
+      <h3>Extension parts:</h3>
+      <ol>
+        <li>Manifest - tells Chrome all the essentials about the extension, assigns the various components and icons, and sets permissions and security.</li>
+        <li>Messages - contain the extension's name and description. Provide I18N support.</li>
+        <li>Icons - a place to hold all icons and images the extension needs.</li>
+        <li>Popup page - will be shown when the extension icon is clicked [Not mandatory].</li>
+        <li>Options page - allows settings management for the extension [Not mandatory].</li>
+        <li>Background page - either an HTML or a Javascript file (or both) that run constantly in the background. Useful for carriying out async tasks, network operations and monitoring.</li>
+      </ol>
+    </section>
+
+    <section class="slide" id="basic-extension-loading">
+      <h3>Once the extension loaded:</h3>
+      <img src="images/extension_loaded.png" alt="extension loaded" />
+      <ul>
+        <li>We can see the manifest info</li>
+        <li>While developing, check Collect errors (note that writing to the console will be grabbed as well)</li>
+        <li>From here we can launch the options view (if available)</li>
+        <li>We can also iunspect our background view</li>
+        <li>Finally, we can remove the extension from Chrome</li>
+    </section>
     <!-- End slides. -->
 
     <!-- Begin extension snippets. Add or remove as needed. -->
