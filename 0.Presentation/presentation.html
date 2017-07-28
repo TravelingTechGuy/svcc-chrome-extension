@@ -45,8 +45,6 @@
       <h3>Github: <a href="https://github.com/TravelingTechGuy">github.com/TravelingTechGuy</a></h3>
       <h3>LinkedIn: <a href="https://www.linkedin.com/in/gvider">linkedin.com/in/gvider</a></h3>
       <h3>Twitter: <a href="https://twitter.com/@TravelTechGuy">@TravelTechGuy</a></h3>
-      <br>
-      <p>clone this repo: <pre><code>git clone https://github.com/TravelingTechGuy/svcc-chrome-extension</code></pre></p>
     </section>
 
     <section class="slide" id="contents">
@@ -60,7 +58,23 @@
       </ol>
     </section>
 
-    <section class="slide" id="extension">
+    <section class="slide" id="prerequisits">
+      <h3>To build and use the extensions in this repo, you'll need:</h3>
+      <ol>
+        <li>A console application of your choosing</li>
+        <li>
+          git - clone this repo:<br>
+          <code>git clone https://github.com/TravelingTechGuy/svcc-chrome-extension</code><br>
+          Or you could just download the full zip at<br><a href="https://github.com/TravelingTechGuy/svcc-chrome-extension/archive/master.zip">https://github.com/TravelingTechGuy/svcc-chrome-extension/archive/master.zip</a>
+        </li>
+        <li>NodeJS and NPM - install from the <a href="https://nodejs.org/">NodeJS site</a></li>
+        <li>Install Webpack globally using NPM:<br>
+          <code>npm i -g webpack</code>
+        </li>
+      </ol>
+    </section>
+
+    <section class="slide" id="whats-an-extension">
       <h3>What are extensions?</h3>
       <blockquote cite="https://developer.chrome.com/extensions">
         <p>
@@ -72,7 +86,7 @@
       <h4>Simply put, extesnions are apps for your browser</h4>
     </section>
 
-    <section class="slide" id="examples">
+    <section class="slide" id="extension-examples">
       <h3>Some examples:</h3>
       <ul>
         <li>
@@ -148,38 +162,7 @@
     </section>
 
     <section class="slide" id="basic-extension-manifest">
-      <h3>Manifest file:</h3>
-      <pre>
-        <code>
-          {
-            "name": "Basic",
-            "version": "1.0.0",
-            "manifest_version": 2,
-            "description": "Basic extension",
-            "homepage_url": "http://www.TravelingTechGuy.com",
-            "icons": {
-              "16": "icons/icon16.png",
-              "19": "icons/icon19.png",
-              "48": "icons/icon48.png",
-              "128": "icons/icon128.png"
-            },
-            "default_locale": "en",
-            "background": {
-              "page": "background.html",
-              "persistent": true
-            },
-            "options_page": "options.html",
-            "browser_action": {
-              "default_icon": "icons/icon19.png",
-              "default_title": "Basic Extension",
-              "default_popup": "popup.html"
-            },
-            "permissions": [
-            ],
-            "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
-          }
-        </code>
-      </pre>
+      <h1>Let's look at the manifest.json file</h1>
     </section>
 
     <section class="slide" id="basic-extension-parts">
@@ -203,6 +186,10 @@
         <li>From here we can launch the options view (if available)</li>
         <li>We can also iunspect our background view</li>
         <li>Finally, we can remove the extension from Chrome</li>
+    </section>
+
+    <section class="slide" id="reactive-extension">
+
     </section>
     <!-- End slides. -->
 
