@@ -88,28 +88,28 @@
     <section class="slide" id="extension-examples">
       <h3>Some examples:</h3>
       <ul>
-        <li>
+        <li class="slide">
           <h4>uBlock Origin</h4>
           <p>
             Blocks ads and unwanted trackers<br>
             Alters page content and DOM
           </p>
         </li>
-        <li>
+        <li class="slide">
           <h4>HTTPS Everywhere</h4>
           <p>
             Attempts to switch to an HTTPS version of every site<br>
             Alters page url
           </p>
         </li>
-        <li>
+        <li class="slide">
           <h4>User Agent Switcher</h4>
           <p>
             Allows your Chrome to pass for other browsers/crawlers<br>
             Alters HTTP request header
           </p>
         </li>
-        <li>
+        <li class="slide">
           <h4>Shrtr</h4>
           <p>
             Shortens urls, using several shortening services<br>
@@ -187,6 +187,19 @@
         <li>Finally, we can remove the extension from Chrome</li>
     </section>
 
+    <section class="slide" id="reactive-extension-why">
+      <h3>Why use React in a Chrom extension?</h3>
+      <ul>
+        <li>It allows us to express our view logic easier, by using componenets</li>
+        <li>Since we have potentially more than one view, it allows code reuse</li>
+        <li>
+          It provides an easy way to encapsulate logic and design<br>
+          where each component will have its own js and css files
+        </li>
+        <li>Note: React can easily be replaced with <a href="https://preactjs.com/">Preact</a> for the same results, with smaller code footprint</li>
+      </ul>
+    </section>
+
     <section class="slide" id="reactive-extension-setup">
       <h3>Reactive extension setup</h3>
       <ul>
@@ -204,6 +217,91 @@
             Now we can run <code>npm run build</code> or <code>npm run dist</code> to build the extension.
           </li>
       </ul>
+    </section>
+
+    <section class="slide" id="reactive-extension-structure">
+      <h3>Our new folder structure:</h4>
+      <pre>
+        <code>
+          src                 //the root folder for Webpack to process
+          --|manifest.json*
+          --|background.html  //only needed if we want access to clipboard
+          --|options.html
+          --|popup.html
+          --|scripts          //All logic goes here
+            --|background.js  //background logic
+            --|popup.js       //React DOM render - can be embedded in HTML
+            --|options.js     //React DOM render - can be embedded in HTML
+            --|components     //React components folder
+              --|popup.js     //component logic
+              --|popup.css    //component stylesheet
+              --|options.js
+              --|options.css
+              --|...
+          --|_locales*
+            --|messages.json
+          --|icons*
+            --|icon16.png
+            --|icon19.png
+            --|icon48.png
+            --|icon128.png
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide" id="reactive-extension-logic">
+      <h3>Extension logic</h3>
+      <ul>
+        <li class="slide">
+          <h4>This extesnions demonstrates:</h4>
+          <ul>
+            <li class="slide">Popup view with actions</li>
+            <li class="slide">Extension icon manipulation</li>
+            <li class="slide">Popup and options views communicates with background</li>
+            <li class="slide">Background logic persists data to local storage and transfers data to options view</li>
+          </ul>
+        </li>
+        <li class="slide">
+          <h4>Key concepts:</h4>
+          <ul>
+            <li class="slide">Communication between views: <code>chrome.runtime.sendMessage</code> and <code>chrome.runtime.onMessage.addListener</code></li>
+            <li class="slide">Local storage access: <code>localStorage.setItem</code> and <code>localStorage.getItem</code></li>
+            <li class="slide">Badge manipulation: <code>chrome.browserAction.setTitle .setBadgeText .setBadgeBackgroundColor</code></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide" id="stockquote-extension">
+      <h3>Lets put all we know together into StockQuote</h3>
+      <ul>
+        <li>The user will use the Options view to provide 2 groups of settings:
+          <ol>
+            <li>a list of stock symbols</li>
+            <li>frequency and time zone</li>
+          </ol>
+        </li>
+        <li>The background page will scrape stock quotes based on the schedule
+          <ol>
+            <li>It runs in a loop and updates the quotes</li>
+            <li>It uses async functions to get the scraped data from Google</li>
+            <li>It persists the results to loacl storage, so they're available for the Popup view</li>
+          </ol> 
+        </li>
+        <li>The Popup view will present the results</li>
+      </ul>
+      Let's look at the code...
+    </section>
+
+    <section class="slide" id="content-extension">
+      <h1>A bonus extension: changes the content of an HTML page ☺</h1>
+    </section>
+
+    <section class="slide" id="fin">
+      <h1>Questions?</h1>
+      <h3>Github: <a href="https://github.com/TravelingTechGuy">github.com/TravelingTechGuy</a></h3>
+      <h3>LinkedIn: <a href="https://www.linkedin.com/in/gvider">linkedin.com/in/gvider</a></h3>
+      <h3>Twitter: <a href="https://twitter.com/@TravelTechGuy">@TravelTechGuy</a></h3>
     </section>
     <!-- End slides. -->
 
