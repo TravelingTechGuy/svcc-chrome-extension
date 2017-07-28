@@ -1,7 +1,7 @@
 // Try this in your browser's Developer Tools:
 //fetch('https://www.google.com/finance/info?q=NSE:AAPL,MSFT,TSLA,AMZN,IBM').then(r=>r.text()).then(d=>console.table(JSON.parse(d.replace('//',''))));
 
-const url = 'https://www.google.com/finance/info?q=NSE:';
+const url = 'https://www.google.com/finance/info?q=NSE:,';
 
 export async function getLatestQuotes(symbols = []) {
   let result = {quotes: []};
