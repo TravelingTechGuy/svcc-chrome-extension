@@ -4,9 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=1024, user-scalable=no">
-
   <title>Chrome Extension SVCC Presentation</title>
-
+  <link rel="icon" type="image/png" href="images/favicon.png">
   <!-- Required stylesheet -->
   <link rel="stylesheet" media="screen" href="deck/core/deck.core.css">
 
@@ -162,7 +161,7 @@
     </section>
 
     <section class="slide" id="basic-extension-manifest">
-      <h1>Let's look at the manifest.json file</h1>
+      <h1>Let's look at the <code>manifest.json</code> file</h1>
     </section>
 
     <section class="slide" id="basic-extension-parts">
@@ -188,8 +187,23 @@
         <li>Finally, we can remove the extension from Chrome</li>
     </section>
 
-    <section class="slide" id="reactive-extension">
-
+    <section class="slide" id="reactive-extension-setup">
+      <h3>Reactive extension setup</h3>
+      <ul>
+        <li>Install all NPM dependencies (let's look at <code>package.json</code>)</li>
+        <li>Create our <code>webpack.config.js</code> file</li>
+          <ul>
+            <li>Support building for development and building for production</li>
+            <li>Support multiple entry points - as needed by the extension</li>
+            <li>Add support for <code>ESLint</code> to prevent basic errors and maintain style (also <code>.eslintrc</code> file)
+            <li>Add support for <code>baebl</code> for the latest ES6 syntax</li>
+            <li>Add support for UglifyJS ans zipping for production</li>
+          </ul>
+          <li>
+            Add NPM scripts to build for development and production<br>
+            Now we can run <code>npm run build</code> or <code>npm run dist</code> to build the extension.
+          </li>
+      </ul>
     </section>
     <!-- End slides. -->
 
