@@ -17,7 +17,7 @@
   <link rel="stylesheet" media="screen" href="deck/extensions/scale/deck.scale.css">
 
   <!-- Style theme. More available in /themes/style/ or create your own. -->
-  <link rel="stylesheet" media="screen" href="deck/themes/style/neon.css">
+  <link rel="stylesheet" media="screen" href="deck/themes/style/web-2.0.css">
 
   <!-- Transition theme. More available in /themes/transition/ or create your own. -->
   <link rel="stylesheet" media="screen" href="deck/themes/transition/horizontal-slide.css">
@@ -270,6 +270,48 @@
           </ul>
         </li>
       </ul>
+    </section>
+
+    <section class="slide" id="local-storage">
+      <h3>Utilizing local storage in an extension</h3>
+      <ol>
+        <li class="slide">
+          <h4><code>window.localStorage</code></h4>
+          Pros:
+          <ul>
+            <li>Synchronous, and thus easier to work with</li>
+            <li>Has support in Dev Tools (<em>Resources > Local Storage</em> to view and modify)</li>
+          </ul>
+          Cons:
+          <ul>
+            <li>Only stores strings, therefore you need to serialize data yourself (<code>JSON.stringify</code>)</li>
+            <li>Is not accessible from content scripts, so you need to rely on Messaging to pass values</li>
+          </ul>
+        </li>
+        <li class="slide">
+          <h4><code>chrome.storage.local</code></h4>
+          Pros:
+          <ul>
+            <li>Can store non-strings with no additional boilerplate</li>
+            <li>Available within Content Scripts</li>
+            <li>Supports events that notify about changes (<code>chrome.storage.onChanged</code>)</li>
+            <li>Has a built-in mechanism for default values</li>
+            <li>Specifying "unlimitedStorage" permission in your manifest allows storing more than the HTML5 <code>localStorage</code> 5MB limit</li>
+          </ul>
+          Cons:
+          <ul>
+            <li>Asynchronous, therefore a bit harder to work with</li>
+            <li>Not accessible from Dev Tools
+          </ul>
+        </li>
+        <li class="slide">
+          <h4><code>chrome.storage.sync</code></h4>
+          Same as <code>chrome.storage.local</code>, but synced between signed-in Chrome instances.
+        </li> 
+        <li class="slide">
+          <h4>Don't forget to add "storage" to the manifest's permissions!</h4>
+        </li>
+      </ol>
     </section>
 
     <section class="slide" id="stockquote-extension">
