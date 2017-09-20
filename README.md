@@ -1,4 +1,4 @@
-# Create a Chrome Extension with React and Webpack - by [Traveling Tech Guy](http://www.TravelingTechGuy)
+# Create a Chrome Extension with React and Webpack - by [Traveling Tech Guy](http://www.TravelingTechGuy.com)
 
 ## A Silicon Valley Code Camp session
 
