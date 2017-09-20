@@ -14,10 +14,11 @@ In this session we'll cover:
 
 The repo contains 4 folders:
 
-0. The presentation itself.
 1. Basic - a basic extension that does nothing.
 1. Reactive - an extension that demonstartes working with React and Webpack, as well as advanced extension concepts.
 1. StockQuote - our final extension, using all we've learned to get current stock quotes.
 1. AgentOrange - a bonus extension, showing how to use a content script to manipulate a loaded page.
+
+The **docs** folder contains the presentation, and can be viewed online at []().
 
 **Comment:** All the code attached is functional and minimal. It could probably be refactored to look nicer, or more OO, or more React-y. But that's not the purpose of this session. Feel free to improve on the code, and make it nicer, and even more functional. My sole request is: if you find bugs, or logical errors, or if the technology moves on, and certain concepts require updates - please open a PR. It'll be my pleasure to update this repo, and keep it current and working.
