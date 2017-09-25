@@ -134,7 +134,15 @@
     </section>
 
     <section class="slide" id="basic-extension">
-      <h3>Basic extension structure</h3>
+      <h3>Basic extension</h3>
+      <ul>
+        <li>A basic extension is a folder containing a manifest file, some messages and some icons.</li>
+        <li>The extension can accsess only the files in its folder.</li>
+        <li>Icons are not strictly mandatory, Chrome will just provide a generic icon.</li>
+        <li>To load your extension into Chrome, click the <em>Load unpacked extension</em> button, and point it to the folder containing the manifest file.</li>
+      </ul>
+      <p/>
+      <h4>Folder structure</h4>
       <pre>
         <code>
           manifest.json*
@@ -152,16 +160,6 @@
         </code>
       </pre>
       <p>Files marked with * are mandatory.</p>
-      <ul>
-        <li>A basic extension is a folder containing a manifest file, some messages and some icons.</li>
-        <li>The extension can accsess only the files in its folder.</li>
-        <li>Icons are not strictly mandatory, Chrome will just provide a generic icon</li>
-        <li>To load your extension into Chrome, click the Load unpacked extension button, and point it to the folder containing the manifest file</li>
-      </ul>
-    </section>
-
-    <section class="slide" id="basic-extension-manifest">
-      <h1>Let's look at the <code>manifest.json</code> file</h1>
     </section>
 
     <section class="slide" id="basic-extension-parts">
@@ -176,41 +174,74 @@
       </ol>
     </section>
 
+    <section class="slide" id="basic-extension-manifest">
+      <h3>The <code>manifest.json</code> file</h3>
+      <pre>
+        {
+          "name": "Basic",
+          "version": "1.0.0",
+          "manifest_version": 2,
+          "description": "Basic extension",
+          "homepage_url": "http://www.TravelingTechGuy.com",
+          "icons": {
+            "16": "icons/icon16.png",
+            "19": "icons/icon19.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+          },
+          "default_locale": "en",
+          "background": {
+            "page": "background.html",
+            "persistent": true
+          },
+          "options_page": "options.html",
+          "browser_action": {
+            "default_icon": "icons/icon19.png",
+            "default_title": "Basic Extension",
+            "default_popup": "popup.html"
+          },
+          "permissions": [
+          ],
+          "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+        }
+      </pre>
+    </section>
+
     <section class="slide" id="basic-extension-loading">
       <h3>Once the extension loaded:</h3>
       <img src="images/extension_loaded.png" alt="extension loaded" />
       <ul>
-        <li>We can see the manifest info</li>
-        <li>While developing, check Collect errors (note that writing to the console will be grabbed as well)</li>
-        <li>From here we can launch the options view (if available)</li>
-        <li>We can also inspect our background view</li>
-        <li>Finally, we can remove the extension from Chrome</li>
+        <li>We can see the manifest info.</li>
+        <li>While developing, check Collect errors (note that writing to the console will be grabbed as well).</li>
+        <li>From here we can launch the options view (if available).</li>
+        <li>We can also inspect our background view.</li>
+        <li>Finally, we can remove the extension from Chrome.</li>
     </section>
 
     <section class="slide" id="reactive-extension-why">
       <h3>Why use React in a Chrome extension?</h3>
       <ul>
-        <li>It allows us to express our view logic easier, by using componenets</li>
-        <li>Since we have potentially more than one view, it allows code reuse</li>
+        <li>It provides an easier way to to express our view logic, by using componenets.</li>
+        <li>Since we have potentially more than one view, it allows code reuse.</li>
         <li>
           It provides an easy way to encapsulate logic and design<br>
-          where each component will have its own js and css files
+          where each component will have its own js and css files.
         </li>
-        <li>Note: React can easily be replaced with <a href="https://preactjs.com/">Preact</a> for the same results, with a smaller code footprint</li>
+        <li>Note: React can easily be replaced with <a href="https://preactjs.com/">Preact</a> for the same results, with a smaller code footprint.</li>
       </ul>
     </section>
 
     <section class="slide" id="reactive-extension-setup">
       <h3>Reactive extension setup</h3>
       <ul>
-        <li>Install all NPM dependencies (let's look at <code>package.json</code>)</li>
+        <li>Install all NPM dependencies (let's look at <code>package.json</code>).</li>
         <li>Create our <code>webpack.config.js</code> file</li>
           <ul>
-            <li>Support building for development and building for production</li>
-            <li>Support multiple entry points - as needed by the extension</li>
-            <li>Add support for <code>ESLint</code> to prevent basic errors and maintain style (also <code>.eslintrc</code> file)
-            <li>Add support for <code>baebl</code> for the latest ES6 syntax</li>
-            <li>Add support for UglifyJS ans zipping for production</li>
+            <li>Support building for development and building for production.</li>
+            <li>Support multiple entry points - as needed by the extension.</li>
+            <li>Add support for <code>ESLint</code> to prevent basic errors and maintain style (also <code>.eslintrc</code> file).
+            <li>Add support for <code>baebl</code> for the latest ES6 syntax.</li>
+            <li>Add support for UglifyJS ans zipping for production.</li>
           </ul>
           <li>
             Add NPM scripts to build for development and production<br>
