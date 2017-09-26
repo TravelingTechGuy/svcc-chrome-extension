@@ -61,7 +61,7 @@ export default class Options extends React.Component {
       timezone: this.getFieldValue('timezone'),
       interval: this.getFieldValue('interval')
     };
-    console.log(options);
+    console.dir(options);
     chrome.runtime.sendMessage({action: 'optionsChanged', options: options}, () => window.close());
   }
 
