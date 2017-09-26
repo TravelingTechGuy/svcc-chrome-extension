@@ -1,16 +1,22 @@
 // Try this in your browser's Developer Tools:
 //fetch('https://www.google.com/finance/info?q=NSE:AAPL,MSFT,TSLA,AMZN,IBM').then(r=>r.text()).then(d=>console.table(JSON.parse(d.replace('//',''))));
 
-const url = 'https://www.google.com/finance/info?q=NSE:,';
+const query = 'https://query.yahooapis.com/v1/public/yql?q=select symbol,LastTradePriceOnly,Change,ChangeinPercent from yahoo.finance.quotes where symbol in (SYMBOLS)&format=json&diagnostics=false&env=store://datatables.org/alltableswithkeys&callback=';
 
 export async function getLatestQuotes(symbols = []) {
-  let result = {quotes: []};
+  let result = {};
   try {
     if(symbols.length) {
-      let response = await fetch(url + symbols.join(','));
-      let text = await response.text();
-      let quotes = JSON.parse(text.replace('//',''));
-      quotes.forEach(q => result.quotes.push({symbol: q.t, current: q.l_cur, change: q.c, changePct: q.cp}));
+      let url = query.replace('SYMBOLS', symbols.map(s => `"${s}"`).join(','));
+      let response = await fetch(url/*, {mode: 'no-cors'}*/);
+      let json = await response.json();
+      console.dir(json);
+      if(Array.isArray(json.query.results.quote)) {
+        result.quotes = json.query.results.quote.map(q => ({symbol: q.symbol, current: q.LastTradePriceOnly, change: q.Change, changePct: q.ChangeinPercent}));
+      }
+      else {
+        throw new UserException('No results found');
+      }
     }
   }
   catch(ex) {
