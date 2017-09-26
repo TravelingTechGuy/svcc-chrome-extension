@@ -60,7 +60,7 @@ export default class Popup extends React.Component {
       <div className="container">
         <div className="header">
           <img src="../icons/svcc.png" width="19" height="19" />
-          <span>&nbsp;StockQuote Extension</span>&nbsp;
+          <span> StockQuote Extension</span>
         </div>
         <div className="content">
           {this.showSymbols()}

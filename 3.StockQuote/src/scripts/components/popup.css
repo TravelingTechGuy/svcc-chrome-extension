@@ -65,9 +65,9 @@ td.pct {
   text-align: right;
 }
 
-td.pct::after {
+/* td.pct::after {
   content: "%";
-}
+} */
 
 .plus {
   color: green;
