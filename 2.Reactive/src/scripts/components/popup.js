@@ -30,7 +30,7 @@ export default class Popup extends React.Component {
       <div className="container">
         <div className="header">
           <img src="../icons/icon19.png" />
-          <span>&nbsp;Reactive Extension</span>&nbsp;
+          <span> Reactive Extension</span>
         </div>
         <div className="content">
           <p/>
