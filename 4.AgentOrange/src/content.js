@@ -1,4 +1,4 @@
-(function() {
+let main = function() {
   const nickname = ['Drumpf', 'Agent Orange', 'Pumpkin', 'Putin Lackey', 'Tiny Fingers'];
   const adverbs = ['yugely', 'bigly', 'tremendously', 'covfefe'];
   let drumpf = /Trump/g, adverb = /\b[A-Za-z]*ly\b/g;
@@ -6,7 +6,7 @@
   let isDrumpfed = false;
   let corrections = 0;
   let elements = document.getElementsByTagName('*');
-  
+
   for(let i = elements.length; i--;) {
     let element = elements[i];
     for(let j = element.childNodes.length; j--;) {
@@ -34,4 +34,6 @@
     }
   }
   chrome.runtime.sendMessage({corrections: corrections}, () => {});
-}());
+};
+
+setTimeout(main, 200);
