@@ -36,4 +36,5 @@ let main = function() {
   chrome.runtime.sendMessage({corrections: corrections}, () => {});
 };
 
-setTimeout(main, 200);
+//add delay, in case content is rendered later by scripts - I'm talking to you CNN!
+setTimeout(main, 500);
