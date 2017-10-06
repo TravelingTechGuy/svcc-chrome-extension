@@ -262,7 +262,11 @@
       <h3>Our new folder structure:</h4>
       <pre>
         <code>
-          src                 //the root folder for Webpack to process
+          package.json        //NPM modules, and build scripts
+          webpack.config.js   //Webpack configuration files
+          +build          //folder containing he built extension (created)
+          +dist           //folder containing the packed extension (created)
+          +src            //source root folder for Webpack to process
           --|manifest.json*
           --|background.html  //only needed if we want access to clipboard
           --|options.html
@@ -279,11 +283,11 @@
               --|...
           --|_locales*
             --|messages.json
-          --|icons*
+          --|icons
             --|icon16.png
             --|icon19.png
             --|icon48.png
-            --|icon128.png
+            --|icon128.png 
         </code>
       </pre>
     </section>
