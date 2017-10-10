@@ -13,7 +13,12 @@ const timezones = {
 export default class Options extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {symbols: [], timezone: '', interval: '', error: ''};
+    this.state = {
+      symbols: [],
+      timezone: '',
+      interval: '',
+      error: ''
+    };
     this._saveOptions = this.saveOptions.bind(this);
     this._addSymbol = this.addSymbol.bind(this);
     this._removeSymbol = this.removeSymbol.bind(this);
