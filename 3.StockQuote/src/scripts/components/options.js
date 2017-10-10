@@ -13,10 +13,10 @@ const timezones = {
 export default class Options extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {symbols: [], timezone: '', interval: ''};
+    this.state = {symbols: [], timezone: '', interval: '', error: ''};
     this._saveOptions = this.saveOptions.bind(this);
-    this._addItem = this.addItem.bind(this);
-    this._removeItem = this.removeItem.bind(this);
+    this._addSymbol = this.addSymbol.bind(this);
+    this._removeSymbol = this.removeSymbol.bind(this);
     chrome.runtime.sendMessage({action: 'getOptions'}, function(response) {
       this.setState(response);
     }.bind(this));
@@ -26,17 +26,27 @@ export default class Options extends React.Component {
     this.setState({[e.target.name]: e.target.value});
   }
 
-  //add item to list
-  addItem(e) {
+  //add symbol to list
+  addSymbol(e) {
     e.preventDefault();
-    let newValue = document.getElementById('symbol').value.toString().toUpperCase().trim();
-    if(newValue) {
-      this.setState({symbols: this.state.symbols.concat(newValue)});
+    let symbol = document.getElementById('symbol').value.toString().trim().toUpperCase();
+    if(symbol) {
+      chrome.runtime.sendMessage({action: 'checkSymbol', symbol: symbol}, response => {
+        if(response.result) {
+          this.setState({symbols: this.state.symbols.concat(symbol), error: ''});
+        }
+        else {
+          this.setState({error: `${symbol} is not a symbol`});
+        }
+      });
+    }
+    else {
+      this.setState({error: 'Please specify a valid symbol'});
     }
   }
 
-  //remove item from list
-  removeItem(e) {
+  //remove symbol from list
+  removeSymbol(e) {
     e.preventDefault();
     let index = e.target.dataset.index;
     let temp = this.state.symbols;
@@ -76,14 +86,15 @@ export default class Options extends React.Component {
                 <p/>
                 <div>
                   <input type="text" id="symbol" />
-                  <button onClick={this._addItem}>Add</button>
+                  <button onClick={this._addSymbol}>Add</button>
+                  <div id="error">{this.state.error}</div>
                 </div>
                 <p/>
                 {
                   this.state.symbols.map((item, index) =>
                     <div className="item" key={item+index}>
-                      <span data-index={index} className="btnDelete" onClick={this._removeItem}></span>
-                      {index + 1}. {item}
+                      <span data-index={index} className="btnDelete" onClick={this._removeSymbol}></span>
+                      <span>{index + 1}. {item}</span>
                     </div>
                   )
                 }

@@ -62,6 +62,9 @@ let main = () => {
           bg.updateQuotes();
           sendResponse({message: 'options saved'});
           break;
+        case 'checkSymbol':
+          logic.checkSymbolValidity(request.symbol).then(result => sendResponse({result: result}));
+          break;
         default:  //unrecognized action - do nothing
           break;
       }

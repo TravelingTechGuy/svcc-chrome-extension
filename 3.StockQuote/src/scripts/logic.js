@@ -1,6 +1,3 @@
-// Try this in your browser's Developer Tools:
-//fetch('https://www.google.com/finance/info?q=NSE:AAPL,MSFT,TSLA,AMZN,IBM').then(r=>r.text()).then(d=>console.table(JSON.parse(d.replace('//',''))));
-
 const query = 'https://query.yahooapis.com/v1/public/yql?q=select symbol,LastTradePriceOnly,Change,ChangeinPercent from yahoo.finance.quotes where symbol in (SYMBOLS)&format=json&diagnostics=false&env=store://datatables.org/alltableswithkeys&callback=';
 
 export async function getLatestQuotes(symbols = []) {
@@ -24,6 +21,18 @@ export async function getLatestQuotes(symbols = []) {
   }
   finally {
     return result;
+  }
+};
+
+export async function checkSymbolValidity(symbol) {
+  try {
+    let url = `https://query.yahooapis.com/v1/public/yql?q=select Name from yahoo.finance.quotes where symbol="${symbol}"&format=json&diagnostics=false&env=store://datatables.org/alltableswithkeys&callback=`;
+    let response = await fetch(url/*, {mode: 'no-cors'}*/);
+    let json = await response.json();
+    return json.query.results.quote.Name !== null;
+  }
+  catch(ex) {
+    return false;
   }
 };
 
